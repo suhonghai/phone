@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<title>Document</title>
+	
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			position: absolute;
+			width: 100%;
+			height: 300px;
+		}
+		.container ul{
+			margin: 0;
+			padding: 0;
+			width: 400%;
+			height: 300px;
+		}
+		.container ul li{
+			position: relative;
+			width: 25%;
+			height: 100%;
+			float: left;
+			list-style: none;
+			border: 1px solid black;
+			box-sizing: border-box;
+			text-align: center;
+			line-height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" id="container">
+		<ul >
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+	
+	<script>
+		var obj = document.getElementById("container");
+		var lis = document.getElementsByTagName("li");
+		var liw = lis[0].offsetWidth;
+		var left = 0;
+		var n = 0;
+		var ex;
+		obj.addEventListener("touchstart",function(e){
+			e.preventDefault();
+			ex = e.changedTouches[0].pageX;
+			left  = container.offsetLeft;
+		})
+		obj.addEventListener("touchmove",function(e){
+			var dis = e.changedTouches[0].pageX - ex;
+			container.style.left = left +dis +"px";
+		})
+		obj.addEventListener("touchend",function(e){
+			n = Math.round(container.offsetLeft/liw);
+			container.style.left = n * liw + "px";
+		})
+
+	</script>
+</body>
+</html>
