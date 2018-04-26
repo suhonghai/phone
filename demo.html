@@ -26,8 +26,11 @@
 			console.log(1);
 			objDiv.innerHTML = e.targetTouches.length;
 			objDiv.addEventListener("touchmove",function(){
-				console.log(22)
+				objDiv.innerHTML = e.targetTouches.length;
 			});
+			objDiv.addEventListener("touchend",function(){
+				objDiv.innerHTML = e.changedTouches.length;
+			})
 		});
 	</script>
 </body>
